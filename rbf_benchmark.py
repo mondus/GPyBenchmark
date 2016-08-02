@@ -69,7 +69,7 @@ print('')
 
 
 
-'''
+
 psicomp_gpu = PSICOMP_RBF_GPU() #creates a new CUDA context
 
 start = cuda.Event()
@@ -80,7 +80,7 @@ r1g = psicomp_gpu.psicomputations(kern, Z, qX, return_psi2_n=False)
 end.record()
 end.synchronize()
 print('RBF psi-stat computation time: '+'%.2f'%(start.time_till(end))+' msec.')
-'''
+
 
 
 psicomp_gpu = PSICOMP_RBF_GPUDEV() #creates a new CUDA context
@@ -107,7 +107,7 @@ print('RBF psi-stat computation time: '+'%.2f'%(start.time_till(end))+' msec.')
 #r4g = psicomp_gpu.psiDerivativecomputations(kern, w1, w2, w3n, Z, qX)
 #print('RBF psi-stat derivative (psi2n) computation time: '+'%.2f'%(time.time()-st_time)+' sec.')
 
-#assert np.all([np.allclose(a,b) for a,b in zip(r1g,r1gdev)])
+assert np.all([np.allclose(a,b) for a,b in zip(r1g,r1gdev)])
 #assert np.all([np.allclose(a,b) for a,b in zip(r1,r1g)])
 #assert np.all([np.allclose(a,b) for a,b in zip(r2,r2g)])
 #assert np.all([np.allclose(a,b) for a,b in zip(r3,r3g)])
